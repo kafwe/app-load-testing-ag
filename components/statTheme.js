@@ -11,7 +11,7 @@ const statPurple = definePartsStyle({
         padding: "4"
     },
     label: {
-        color: "purple.600",
+        color: "purple.500",
     },
 
 })
