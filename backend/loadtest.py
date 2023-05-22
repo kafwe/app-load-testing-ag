@@ -7,6 +7,10 @@ from datetime import timedelta
 import socket
 import tldextract
 import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def validate_domain(domain):
     try:
@@ -21,9 +25,10 @@ def lambda_handler(event, context):
     url = 'https://google.com'
     total_requests = 10
 
+    
     # Retrieve the target HTTP endpoint URL from the event
-    if 'url' in event:
-        url = event['url']
+    if 'queryStringParameters' in event:
+        url = event['queryStringParameters']['url']
         total_requests = 100
 
     # Extract the domain name from the URL
@@ -33,10 +38,9 @@ def lambda_handler(event, context):
     if not validate_domain(domain):
         return {
             'statusCode': 400,
-            'body': 'Invalid domain'
+            'body': 'Invalid domain' 
         }
 
-    # Initialise variables for metrics
     response_times = []
     bytes_sent = 0
 
@@ -49,9 +53,10 @@ def lambda_handler(event, context):
             bytes_sent += len(response.content)
 
         except requests.exceptions.RequestException as e:
-            print(f"Request error: {e}")
+            logger.info(f'Request error: {e}')
 
-    # Calculate metrics using built-in functions
+
+    # Calculate metrics
     total_time = sum(response_times)
     slowest_time = max(response_times)
     fastest_time = min(response_times)
@@ -67,8 +72,8 @@ def lambda_handler(event, context):
             'average_time': average_time,
             'requests_per_second': requests_per_second,
             'throughput_bytes': bytes_sent
-        }, 
-        'data': response_times
+        },
+        'response_times': response_times
     }
 
 
