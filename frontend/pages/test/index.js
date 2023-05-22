@@ -41,7 +41,7 @@ export default function Home() {
       <Box h="100vh">
         <Center h="100%">
           <VStack spacing={8}>
-            <Heading as='h1' size='lg' color={'gray.700'} px={8}>Loadtesting your endpoint. Please be patient</Heading>
+            <Heading as='h1' size='lg' color={'gray.700'} px={8}>Load testing your endpoint. Please be patient</Heading>
             <Spinner
               thickness='4px'
               speed='0.65s'
