@@ -6,6 +6,13 @@ AWS Lambda was chosen for its built-in concurrency, which enables each request t
 
 A live demo of the app is available here: https://app-load-testing-ag.vercel.app
 
+This app was built for the Allan Gray Coding challenge held at UCT, which I won. 
+
+![image](https://github.com/kafwe/http-load-tester/assets/75791207/f2980e84-1986-4f14-b042-aaaab9ca179e)
+
+Submissions were evaluated based on functionality, code quality, performance, and usability. Creativity and extra features were also highly valued. While most submissions met the basic criteria, according to the judges, mine stood out for exceeding these criteria. They liked that I developed a cloud-based solution with a user-friendly front-end and a serverless backend, aligning well with industry trends and standards.
+
+
 ## Getting Started
 
 To get started follow the steps below:
